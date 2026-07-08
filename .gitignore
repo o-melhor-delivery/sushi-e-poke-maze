@@ -1,0 +1,8 @@
+# Ignorar arquivos desnecessários
+node_modules/
+.DS_Store
+.env
+*.log
+
+# Manter a imagem de fundo (comentado para referência)
+# bg-landing.jpg deve ser adicionada ao repositório
