@@ -1,0 +1,8 @@
+{
+  "name": "sushi-e-poke-maze",
+  "version": "1.0.0",
+  "description": "Landing page com captura de leads",
+  "dependencies": {
+    "twilio": "^3.95.0"
+  }
+}
