@@ -76,12 +76,6 @@
             transform: translateY(0);
         }
 
-        .ifood-icon {
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-        }
-
         @media (max-width: 480px) {
             .ifood-button {
                 font-size: 16px;
@@ -95,9 +89,9 @@
         <div class="image-container">
             <!-- Botão posicionado no campo branco -->
             <div class="button-wrapper">
-                <a href="javascript:void(0);" class="ifood-button" onclick="openIFood()">
+                <button class="ifood-button" id="ifoodBtn">
                     🛵 Peça Agora
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -105,24 +99,20 @@
     <script>
         // ID da sua loja no iFood
         const STORE_ID = '7e70a00a-be4c-4142-9d35-ed2bb6ade202';
+        const IFOOD_WEB_URL = 'https://www.ifood.com.br/delivery/maringa-pr/chegamos-maringa-sushi-e-poke-centro';
 
-        function openIFood() {
-            // URL do deep link do iFood
+        document.getElementById('ifoodBtn').addEventListener('click', function() {
+            // Tenta abrir no app do iFood
             const deepLinkUrl = `ifood://restaurants/${STORE_ID}`;
-            const webUrl = `https://www.ifood.com.br/delivery/maringa-pr/chegamos-maringa-sushi-e-poke-centro/b4e72424-a6d9-4a0b-ab7c-4bbb5fbe3f2a`;
-
-            // Tenta abrir o app primeiro
-            const timeout = setTimeout(() => {
-                // Se o app não abrir em 1 segundo, abre no navegador
-                window.location.href = webUrl;
-            }, 1000);
-
-            // Tenta o deep link
+            
+            // Abre o deep link
             window.location.href = deepLinkUrl;
-
-            // Limpa o timeout se o deep link funcionar
-            setTimeout(() => clearTimeout(timeout), 100);
-        }
+            
+            // Se não abrir em 2 segundos, abre no navegador
+            setTimeout(function() {
+                window.location.href = IFOOD_WEB_URL;
+            }, 2000);
+        });
     </script>
 </body>
 </html>
