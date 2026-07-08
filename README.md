@@ -1,47 +1,133 @@
-# 🍣 Chegamos Maringa - Sushi e Poke
+# 🍣 Chegamos Maringá - Sushi e Poke
 
-Landing page com botão direto para a loja no iFood.
+Landing page com captura de leads via WhatsApp para o restaurante Maze Gohan.
 
-## 📋 Como funciona
+## 🚀 Funcionalidades
 
-- Página estática com imagem de fundo
-- Botão "Peça Agora" posicionado no campo branco
-- Abre o app do iFood quando disponível
-- Fallback para navegador web se o app não estiver instalado
+✅ Landing page responsiva com design atrativo
+✅ Formulário modal para captura de leads
+✅ Integração com WhatsApp via Twilio
+✅ Envio automático de confirmação para o cliente
+✅ Notificação para o dono com dados do cliente
+✅ Formatação automática de telefone
+✅ Redireciona para iFood após submissão
 
-## 🔧 Instruções de uso
+## 📋 Requisitos
 
-### 1️⃣ Adicionar a imagem de fundo
+- Conta grátis no [Twilio](https://www.twilio.com)
+- Conta grátis no [Vercel](https://vercel.com)
+- Acesso ao repositório GitHub
 
-Coloque o arquivo `bg-landing.jpg` na raiz do repositório (mesma pasta do `index.html`):
+## 🔧 Instalação e Configuração
+
+### 1. Configurar Twilio
+
+1. Acesse https://www.twilio.com e crie uma conta (grátis)
+2. Vá para **Console > API Keys & Tokens**
+3. Copie:
+   - **Account SID**
+   - **Auth Token**
+4. Vá para **Messaging > Try it Out**
+5. Ative o WhatsApp Sandbox
+6. Você receberá um número no formato: **+1234567890**
+
+### 2. Fazer Deploy no Vercel
+
+1. Acesse https://vercel.com e faça login com GitHub
+2. Clique em "New Project"
+3. Selecione o repositório `sushi-e-poke-maze`
+4. Em **Environment Variables**, adicione:
+
+```
+TWILIO_ACCOUNT_SID=seu_account_sid
+TWILIO_AUTH_TOKEN=seu_auth_token
+TWILIO_WHATSAPP_FROM=+1234567890 (número Twilio)
+OWNER_WHATSAPP=+5544991217870 (seu número)
+```
+
+5. Clique em "Deploy"
+
+### 3. Atualizar URL da API no HTML
+
+Se seu domínio no Vercel for diferente, atualize o arquivo `index.html`:
+
+```javascript
+// Procure por esta linha:
+const response = await fetch('/api/send-message', {
+
+// E mude para:
+const response = await fetch('https://seu-dominio-vercel.vercel.app/api/send-message', {
+```
+
+## 🧪 Testando
+
+1. Acesse https://o-melhor-delivery.github.io/sushi-e-poke-maze/
+2. Clique no botão "🛵 Peça Agora"
+3. Preencha o formulário com:
+   - Nome: Seu nome
+   - Telefone: Seu número (com DDD)
+4. Clique em "Receber Cupom 🎁"
+5. Você deve receber uma mensagem no WhatsApp confirmando
+
+## 📁 Estrutura do Projeto
 
 ```
 sushi-e-poke-maze/
-├── index.html
-├── bg-landing.jpg    ← Sua imagem aqui
-└── README.md
+├── index.html                 # Landing page principal
+├── api/
+│   └── send-message.js       # API para enviar mensagens WhatsApp
+├── package.json              # Dependências do projeto
+├── vercel.json               # Configuração do Vercel
+├── .env.example              # Exemplo de variáveis de ambiente
+└── README.md                 # Este arquivo
 ```
 
-### 2️⃣ Deploy com GitHub Pages
+## 🔐 Segurança
 
-1. Vá em **Settings** → **Pages**
-2. Em "Source", selecione **Deploy from a branch**
-3. Escolha branch **main** e pasta **/ (root)**
-4. Clique em Save
+- As credenciais Twilio são armazenadas como variáveis de ambiente no Vercel
+- Nunca commite credenciais no repositório
+- Use `.env.example` como referência
 
-Sua página estará disponível em: `https://o-melhor-delivery.github.io/sushi-e-poke-maze/`
+## 📱 Integração WhatsApp
 
-## 🔗 Links da loja
+O sistema envia 2 mensagens:
 
-- **ID da loja:** `7e70a00a-be4c-4142-9d35-ed2bb6ade202`
-- **Deep Link:** `ifood://restaurants/7e70a00a-be4c-4142-9d35-ed2bb6ade202`
+**Para o Dono:**
+```
+📱 Novo cliente!
 
-## 📱 Comportamento do botão
+Nome: [Nome do cliente]
+Telefone: [Número do cliente]
+```
 
-- ✅ Tenta abrir no app iFood primeiro
-- ✅ Se o app não estiver instalado, abre no navegador web
-- ✅ Funciona em desktop e mobile
+**Para o Cliente:**
+```
+Olá [Nome]! 🎉
+
+Recebemos seus dados com sucesso!
+Acesse agora seu cupom de desconto exclusivo no iFood.
+```
+
+## 🚨 Troubleshooting
+
+### Mensagem não chega
+- ✅ Verificar se as variáveis de ambiente estão corretas no Vercel
+- ✅ Confirmar que o número Twilio foi ativado no WhatsApp Sandbox
+- ✅ Verificar o console do navegador (F12) para erros
+
+### Formulário não funciona
+- ✅ Limpar cache do navegador (Ctrl+Shift+Delete)
+- ✅ Verificar se a API está acessível (testar URL no navegador)
+- ✅ Verificar logs no Vercel
+
+## 📞 Suporte
+
+Para problemas com Twilio, consulte: https://www.twilio.com/docs/whatsapp
+
+## 📄 Licença
+
+Projeto privado - Maze Gohan
 
 ---
 
-**Desenvolvido com ❤️ para Chegamos Maringa**
+**Desenvolvido com ❤️ para Chegamos Maringá**
