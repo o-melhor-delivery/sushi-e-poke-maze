@@ -377,14 +377,15 @@
             const phone = document.getElementById('clientPhone').value;
 
             try {
-                const response = await fetch('/api/send-message', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxyQ71TuocqnzJkemxoRGHR8IBIHldAE3hv44FoOb8U5AyBEJhjdHSLlPyYsQV5qKAo/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        name: name,
-                        phone: phone
+    nome: name,
+    telefone: phone
+})
                     })
                 });
 
