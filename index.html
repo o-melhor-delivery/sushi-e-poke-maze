@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chegamos Maringa - Sushi e Poke</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            background-image: url('bg-landing.jpg');
+            background-size: cover;
+            background-position: center;
+            aspect-ratio: 9 / 16;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            z-index: 10;
+        }
+
+        .ifood-button {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #ea1d2c 0%, #d41a23 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(234, 29, 44, 0.4);
+        }
+
+        .ifood-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(234, 29, 44, 0.6);
+        }
+
+        .ifood-button:active {
+            transform: translateY(0);
+        }
+
+        .ifood-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            .ifood-button {
+                font-size: 16px;
+                padding: 14px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <!-- Botão posicionado no campo branco -->
+            <div class="button-wrapper">
+                <a href="javascript:void(0);" class="ifood-button" onclick="openIFood()">
+                    🛵 Peça Agora
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ID da sua loja no iFood
+        const STORE_ID = '7e70a00a-be4c-4142-9d35-ed2bb6ade202';
+
+        function openIFood() {
+            // URL do deep link do iFood
+            const deepLinkUrl = `ifood://restaurants/${STORE_ID}`;
+            const webUrl = `https://www.ifood.com.br/delivery/maringa-pr/chegamos-maringa-sushi-e-poke-centro/b4e72424-a6d9-4a0b-ab7c-4bbb5fbe3f2a`;
+
+            // Tenta abrir o app primeiro
+            const timeout = setTimeout(() => {
+                // Se o app não abrir em 1 segundo, abre no navegador
+                window.location.href = webUrl;
+            }, 1000);
+
+            // Tenta o deep link
+            window.location.href = deepLinkUrl;
+
+            // Limpa o timeout se o deep link funcionar
+            setTimeout(() => clearTimeout(timeout), 100);
+        }
+    </script>
+</body>
+</html>
