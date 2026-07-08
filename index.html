@@ -89,30 +89,11 @@
         <div class="image-container">
             <!-- Botão posicionado no campo branco -->
             <div class="button-wrapper">
-                <button class="ifood-button" id="ifoodBtn">
+                <a href="https://www.ifood.com.br/delivery/maringa-pr/sushi--poke-mazegohan-zona-03/7e70a00a-be4c-4142-9d35-ed2bb6ade202?UTM_Medium=share" class="ifood-button" target="_blank" rel="noopener noreferrer">
                     🛵 Peça Agora
-                </button>
+                </a>
             </div>
         </div>
     </div>
-
-    <script>
-        // ID da sua loja no iFood
-        const STORE_ID = '7e70a00a-be4c-4142-9d35-ed2bb6ade202';
-        const IFOOD_WEB_URL = 'https://www.ifood.com.br/delivery/maringa-pr/chegamos-maringa-sushi-e-poke-centro';
-
-        document.getElementById('ifoodBtn').addEventListener('click', function() {
-            // Tenta abrir no app do iFood
-            const deepLinkUrl = `ifood://restaurants/${STORE_ID}`;
-            
-            // Abre o deep link
-            window.location.href = deepLinkUrl;
-            
-            // Se não abrir em 2 segundos, abre no navegador
-            setTimeout(function() {
-                window.location.href = IFOOD_WEB_URL;
-            }, 2000);
-        });
-    </script>
 </body>
 </html>
